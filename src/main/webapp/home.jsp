@@ -18,5 +18,15 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
+
+<form action="getAlien">
+    <div class="form-group">
+
+        <input type="text" name="aid" class="form-control" id="exe" aria-describedby="emailHelp" >
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 </body>
 </html>
