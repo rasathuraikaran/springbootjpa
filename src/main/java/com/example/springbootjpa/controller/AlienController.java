@@ -4,15 +4,13 @@ import com.example.springbootjpa.AlienRepo;
 import com.example.springbootjpa.model.Alien;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 public class AlienController {
     @Autowired
     AlienRepo alienRepo;
@@ -56,17 +54,23 @@ public class AlienController {
         return "home.jsp";
     }
 
-@RequestMapping("/aliens")
-@ResponseBody
+@GetMapping(path = "/aliens",produces = "application/json")
     public List<Alien> getAliens(){
         return  alienRepo.findAll();
 
     }
+    @PostMapping("/aliens")
+    public Alien addAliens(@RequestBody  Alien alien){
+        System.out.println("Hi this srkdmsmdkms");
+        System.out.println(alien.getAid());
+        alienRepo.save(alien);
+        return  alien ;
 
+    }
 
 
     @RequestMapping("/aliens/{aid}")
-    @ResponseBody
+
     public Optional<Alien> getOneAlien(@PathVariable int aid){
         return  alienRepo.findById(aid);
 
