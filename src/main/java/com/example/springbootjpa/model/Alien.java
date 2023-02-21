@@ -26,6 +26,16 @@ public class Alien {
 
     private String aname;
 
+    public String getAlang() {
+        return alang;
+    }
+
+    public void setAlang(String alang) {
+        this.alang = alang;
+    }
+
+    private String alang;
+
     @Override
     public String toString() {
         return "Alien{" +
