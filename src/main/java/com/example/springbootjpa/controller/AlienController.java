@@ -89,4 +89,10 @@ public class AlienController {
 
     }
 
+    @PutMapping("/aliens")
+    public Alien updateAlien(Alien alien){
+        alienRepo.save(alien);
+        return alien;
+    }
+
 }
