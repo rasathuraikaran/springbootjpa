@@ -56,11 +56,12 @@ public class AlienController {
 
 @GetMapping(path = "/aliens",produces = "application/json")
     public List<Alien> getAliens(){
+    System.out.println("nfdejn");
         return  alienRepo.findAll();
 
     }
     @PostMapping("/aliens")
-    public Alien addAliens(@RequestBody  Alien alien){
+    public Alien addAliens( Alien alien){
         System.out.println("Hi this srkdmsmdkms");
         System.out.println(alien.getAid());
         alienRepo.save(alien);
@@ -73,6 +74,18 @@ public class AlienController {
 
     public Optional<Alien> getOneAlien(@PathVariable int aid){
         return  alienRepo.findById(aid);
+
+    }
+
+
+    @DeleteMapping ("/aliens/{aid}")
+
+    public String deleteOneAlien(@PathVariable int aid){
+
+        alienRepo.deleteById(aid);
+
+
+        return "home";
 
     }
 
